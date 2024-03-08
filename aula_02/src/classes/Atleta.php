@@ -3,6 +3,7 @@ namespace G1ll\Aula02\classes;
 
 use G1ll\Aula02\classes\Abstracts\Pessoa;
 use G1ll\Aula02\interfaces\IMC;
+use Exception;
 
 class Atleta extends Pessoa implements IMC{
 
@@ -20,13 +21,16 @@ class Atleta extends Pessoa implements IMC{
 
 	public function calcImc():void 
 	{
-		if (
-			is_numeric($this->altura)
-			&& is_numeric($this->peso)
-		) {
-			$this->imc = $this->peso / $this->altura ** 2;
-		} else {
-			echo "\nIMC $this->nome: Erro, informe peso e altura\n";
+		try {
+			if(isset($this->peso)&&isset($this->altura)) {
+				$this->imc = $this->peso/$this->altura**2;		
+			} else{
+				throw new Exception("Erro, defina peso e altura primeiro!");
+			}
+		} catch (Exception $error) {
+			echo $error->getMessage();
+			foreach($error->getTrace() as $trace) print_r($trace);
+			throw $error;
 		}
 	}
 
