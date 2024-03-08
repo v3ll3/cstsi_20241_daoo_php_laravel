@@ -11,7 +11,7 @@ class Relatorio{
 	public function add($pessoa):void
 	{
 		$this->pessoas[]=$pessoa;
-		var_dump($this->pessoas);
+		// var_dump($this->pessoas);
 	}
 	
 	public function log($pessoa):void
