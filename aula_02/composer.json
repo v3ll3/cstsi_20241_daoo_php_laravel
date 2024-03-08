@@ -12,7 +12,8 @@
         }
     },
     "scripts": {
-        "start":"php -S localhost:8081 -t src"
+        "start":"php -S localhost:8081 -t src",
+        "psy":"./vendor/psy/psysh/bin/psysh"
     },
     "authors": [
         {
