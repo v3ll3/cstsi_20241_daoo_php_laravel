@@ -50,4 +50,16 @@ class Atleta extends Pessoa {
 		else $this->$name = $value;
 	}
 
+
+	public function __toString():string{
+		$saida = "\n===Dados do Atleta==="
+               ."\nNome: $this->nome"
+               .($this->idade ? "\nIdade: $this->idade" : "")
+               ."\nPessoa: $this->peso"
+               ."\nAltura: $this->altura";
+		$saida .= (isset($this->imc))
+				?"\nIMC: ".number_format($this->imc, 3)
+				:"";
+		return $saida;
+	}
 }
