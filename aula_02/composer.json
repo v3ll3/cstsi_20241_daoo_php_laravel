@@ -1,0 +1,25 @@
+{
+    "name": "g1ll/aula_02",
+    "description": "Projeto com exemplos da aula 02 DAOO-20241",
+    "type": "project",
+    "require-dev": {
+        "psy/psysh": "@stable"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "G1ll\\Aula02\\": "src/"
+        }
+    },
+    "scripts": {
+        "start":"php -S localhost:8081 -t src"
+    },
+    "authors": [
+        {
+            "name": "Gill D3567",
+            "email": "gillvelleda@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
