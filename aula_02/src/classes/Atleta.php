@@ -1,7 +1,9 @@
 <?php
 namespace G1ll\Aula02\classes;
- 
-class Atleta extends Pessoa {
+
+use G1ll\Aula02\classes\Abstracts\Pessoa;
+
+class Atleta extends Pessoa{
 
 	public $altura, $peso;
 	private $imc;

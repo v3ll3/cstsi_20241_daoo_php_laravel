@@ -2,4 +2,4 @@
 
 require "../vendor/autoload.php";
 
-echo "Olá Mundo!!";
+require "exemplo_02_abstract.php";
