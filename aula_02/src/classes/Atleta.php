@@ -53,10 +53,8 @@ class Atleta extends Pessoa {
 
 	public function __toString():string{
 		$saida = "\n===Dados do Atleta==="
-               ."\nNome: $this->nome"
-               .($this->idade ? "\nIdade: $this->idade" : "")
-               ."\nPessoa: $this->peso"
-               ."\nAltura: $this->altura";
+               .parent::__toString();
+
 		$saida .= (isset($this->imc))
 				?"\nIMC: ".number_format($this->imc, 3)
 				:"";
