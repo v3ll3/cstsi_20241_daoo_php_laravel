@@ -2,8 +2,9 @@
 namespace G1ll\Aula02\classes;
 
 use G1ll\Aula02\classes\Abstracts\Pessoa;
+use G1ll\Aula02\interfaces\IMC;
 
-class Atleta extends Pessoa{
+class Atleta extends Pessoa implements IMC{
 
 	public $altura, $peso;
 	private $imc;
@@ -17,7 +18,7 @@ class Atleta extends Pessoa{
 		$this->calcImc();
 	}
 
-	public function calcImc()
+	public function calcImc():void 
 	{
 		if (
 			is_numeric($this->altura)
@@ -29,7 +30,8 @@ class Atleta extends Pessoa{
 		}
 	}
 
-	public function showImc(){
+	public function showImc():void
+	{
 		if(is_numeric($this->imc))
 			echo "\nO IMC do $this->nome é: " . number_format($this->imc, 2) . "\n";
 	}
