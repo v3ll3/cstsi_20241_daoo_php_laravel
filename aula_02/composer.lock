@@ -205,12 +205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3a6b6bf5ce1b8a497ac75cb5d31cc7376f9a902f"
+                "reference": "31c74a59d8bffdcec73adb43b398f6942f7dc26b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3a6b6bf5ce1b8a497ac75cb5d31cc7376f9a902f",
-                "reference": "3a6b6bf5ce1b8a497ac75cb5d31cc7376f9a902f",
+                "url": "https://api.github.com/repos/symfony/console/zipball/31c74a59d8bffdcec73adb43b398f6942f7dc26b",
+                "reference": "31c74a59d8bffdcec73adb43b398f6942f7dc26b",
                 "shasum": ""
             },
             "require": {
@@ -290,7 +290,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:28:06+00:00"
+            "time": "2024-03-04T12:49:13+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -703,12 +703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "3d0a98879bbc7585aff5f9a5a539074328cc2ca0"
+                "reference": "ef964850371aca5def9fc8a3059d9b1690bb3b6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/3d0a98879bbc7585aff5f9a5a539074328cc2ca0",
-                "reference": "3d0a98879bbc7585aff5f9a5a539074328cc2ca0",
+                "url": "https://api.github.com/repos/symfony/string/zipball/ef964850371aca5def9fc8a3059d9b1690bb3b6c",
+                "reference": "ef964850371aca5def9fc8a3059d9b1690bb3b6c",
                 "shasum": ""
             },
             "require": {
@@ -782,7 +782,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-03T19:41:36+00:00"
+            "time": "2024-03-08T12:55:53+00:00"
         },
         {
             "name": "symfony/var-dumper",
