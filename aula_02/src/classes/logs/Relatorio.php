@@ -1,20 +1,18 @@
 <?php 
 namespace G1ll\Aula02\classes\logs;
 
-// use Gill\Aula02\classes\Abstracts\Pessoa;
-// use Gill\Aula02\classes\{Medico, Atleta};
+use G1ll\Aula02\classes\Abstracts\Pessoa;
 
 class Relatorio{
 
 	private $pessoas = [];
 
-	public function add($pessoa):void
+	public function add(Pessoa $pessoa):void
 	{
 		$this->pessoas[]=$pessoa;
-		// var_dump($this->pessoas);
 	}
 	
-	public function log($pessoa):void
+	public function log(Pessoa $pessoa):void
 	{
 		echo "\nlog: ".$pessoa;
 	}
