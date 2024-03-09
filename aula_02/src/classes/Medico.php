@@ -2,7 +2,7 @@
 namespace G1ll\Aula02\classes;
 
 use G1ll\Aula02\classes\Abstracts\Pessoa;
-
+// use G1ll\Aula02\classes\Pessoa;
 class Medico extends Pessoa {
 
 	private $CRM, $especialidade;
