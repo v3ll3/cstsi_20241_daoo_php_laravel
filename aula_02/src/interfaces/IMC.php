@@ -1,6 +1,6 @@
 <?php 
 
-namespace G1ll\Aula02\interfaces;
+namespace Daoo\Aula02\interfaces;
 
 interface IMC
 {

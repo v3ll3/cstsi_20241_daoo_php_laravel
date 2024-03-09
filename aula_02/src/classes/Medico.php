@@ -1,8 +1,8 @@
 <?php
-namespace G1ll\Aula02\classes;
+namespace Daoo\Aula02\classes;
 
-use G1ll\Aula02\classes\Abstracts\Pessoa;
-// use G1ll\Aula02\classes\Pessoa;
+use Daoo\Aula02\classes\Abstracts\Pessoa;
+// use Daoo\Aula02\classes\Pessoa;
 class Medico extends Pessoa {
 
 	private $CRM, $especialidade;
@@ -22,10 +22,12 @@ class Medico extends Pessoa {
 	public function __toString()
 	{
 		$className = self::class;
-		return 	"\n\n===Dados de $className ==="
-			. "\nNome: $this->nome"
-			. ($this->idade ? "\nIdade: $this->idade" : "")
-			. "\nEspecialidade: $this->especialidade"
-			. "\nCRM: $this->CRM\n";
+		return 	"\n=== Dados de $className ==="
+			. "\nHerança: ".parent::class
+			. "\nAtributos:"
+			. "\n\tNome: $this->nome"
+			. ($this->idade ? "\n\tIdade: $this->idade" : "")
+			. "\n\tEspecialidade: $this->especialidade"
+			. "\n\tCRM: $this->CRM\n";
 	}
 }

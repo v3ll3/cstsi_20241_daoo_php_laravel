@@ -1,7 +1,7 @@
 <?php 
-namespace G1ll\Aula02\classes\logs;
+namespace Daoo\Aula02\classes\logs;
 
-use G1ll\Aula02\classes\Abstracts\Pessoa;
+use Daoo\Aula02\classes\Abstracts\Pessoa;
 
 class Relatorio{
 
@@ -14,7 +14,7 @@ class Relatorio{
 	
 	public function log(Pessoa $pessoa):void
 	{
-		echo "\nlog: ".$pessoa;
+		echo "\n\nlog: \n".$pessoa;
 	}
 
 	public function imprime(): void{

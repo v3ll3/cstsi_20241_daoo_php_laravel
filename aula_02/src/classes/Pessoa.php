@@ -1,5 +1,5 @@
 <?php
-namespace G1ll\Aula02\classes;
+namespace Daoo\Aula02\classes;
 
 class Pessoa
 {

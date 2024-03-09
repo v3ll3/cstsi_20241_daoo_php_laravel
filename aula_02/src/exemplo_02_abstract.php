@@ -2,11 +2,11 @@
 
 echo "<pre>";
 
-use G1ll\Aula02\classes\Atleta;
-use G1ll\Aula02\classes\Medico;
-use G1ll\Aula02\classes\Abstracts\Pessoa as PessoaAbstrata;
-use G1ll\Aula02\classes\Pessoa;
-use G1ll\Aula02\classes\logs\Relatorio;
+use Daoo\Aula02\classes\Atleta;
+use Daoo\Aula02\classes\Medico;
+use Daoo\Aula02\classes\Abstracts\Pessoa as PessoaAbstrata;
+use Daoo\Aula02\classes\Pessoa;
+use Daoo\Aula02\classes\logs\Relatorio;
 
 $atl1 = new Atleta("Luizito",36,1.8,80);
 $med1 = new Medico("Pualo Paixão",122343,"Fisioterapeuta");

@@ -1,8 +1,8 @@
 <?php
-namespace G1ll\Aula02\classes;
+namespace Daoo\Aula02\classes;
 
-use G1ll\Aula02\classes\Abstracts\Pessoa;
-use G1ll\Aula02\traits\IMC;
+use Daoo\Aula02\classes\Abstracts\Pessoa;
+use Daoo\Aula02\traits\IMC;
 
 class Jogador extends Pessoa{
 

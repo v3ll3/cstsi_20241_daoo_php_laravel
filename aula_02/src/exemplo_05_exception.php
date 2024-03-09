@@ -2,7 +2,7 @@
 
 echo "<pre>";
 
-use G1ll\Aula02\classes\Atleta;
+use Daoo\Aula02\classes\Atleta;
 
 $e = new \Exception("Erro asdfasdf ..");
 

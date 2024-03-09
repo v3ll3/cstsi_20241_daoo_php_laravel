@@ -1,5 +1,5 @@
 <?php
-namespace G1ll\Aula02\classes\Abstracts;
+namespace Daoo\Aula02\classes\Abstracts;
 
 abstract class Pessoa
 {

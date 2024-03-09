@@ -1,6 +1,6 @@
 <?php 
 
-namespace G1ll\Aula02\traits;
+namespace Daoo\Aula02\traits;
 
 trait IMC
 {
