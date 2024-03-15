@@ -9,7 +9,7 @@ class App{
 		self::loadEnvs();
 		error_log("DIR:\n".__DIR__."\n");
 		include_once(__DIR__."/../config/routes.php");
-		Route::routes($routes);
+		Route::resolve($routes);
 	}
 	
 	public static function loadEnvs(): void{

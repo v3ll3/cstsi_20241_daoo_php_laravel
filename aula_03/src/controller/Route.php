@@ -7,7 +7,7 @@ use Daoo\Aula03\controller\api\Controller as ApiController;
 class Route
 {
 	private static $query;
-	public static function routes(Array $routes)
+	public static function resolve(Array $routes)
 	{
 
 		$url_path = trim($_SERVER['REQUEST_URI'], '/');

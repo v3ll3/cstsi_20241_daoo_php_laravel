@@ -2,19 +2,19 @@
 
 namespace Daoo\Aula03\controller\api;
 
-// use Daoo\Aula03\model\Produto as ModelProduto;
+use Daoo\Aula03\model\Produto as ModelProduto;
 use Exception;
 
 class Produto extends Controller
 {
 
-	// private ModelProduto $model;
-	private $model;
+	private ModelProduto $model;
+	// private $model;
 
 	public function __construct()
 	{
 		try{
-			// $this->model = new ModelProduto();
+			$this->model = new ModelProduto();
 			$this->setHeader(200);
 		}catch(Exception $error){
 			$this->setHeader(500,"Erro ao conectar ao banco!");
@@ -24,11 +24,15 @@ class Produto extends Controller
 
 	public function index()
 	{
-		echo json_encode([
-			"msg"=>"ola mundo!!"
-		]);
-		// echo json_encode($this->model->read());
+		// echo json_encode([
+		// 	"msg"=>"ola mundo!!"
+		// ]);
+		echo json_encode($this->model->read());
 	}
+
+	// public function daoo($msg){
+	// 	echo $msg;
+	// }
 
 	public function show($id)
 	{
