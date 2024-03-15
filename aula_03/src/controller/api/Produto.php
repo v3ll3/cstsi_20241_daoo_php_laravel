@@ -13,13 +13,13 @@ class Produto extends Controller
 
 	public function __construct()
 	{
-		try{
+		try {
 			$this->model = new ModelProduto();
 			$this->setHeader(200);
-		}catch(Exception $error){
-			$this->setHeader(500,"Erro ao conectar ao banco!");
-			json_encode(["error"=>$error->getMessage()]);
-		}	
+		} catch (Exception $error) {
+			$this->setHeader(500, "Erro ao conectar ao banco!");
+			json_encode(["error" => $error->getMessage()]);
+		}
 	}
 
 	public function index()
@@ -61,31 +61,20 @@ class Produto extends Controller
 			$this->model->importado = isset($_POST['importado']);
 
 
-			if(isset($_POST['descontos'])){
-				error_log("POST PROD-DESC\n".print_r($_POST,TRUE));
-				if(!$this->model->insertProdWithDesc($_POST['descontos'])){
-					$msg = 'Erro ao cadastrar produto!';
-					$this->setHeader(500,$msg);
-					throw new \Exception($msg);
-				}
-				echo json_encode([
-					"success" => "Produto com desconto criado com sucesso!",
-					"data" => $this->model->getColumns()
-				]);
-			}else if ($this->model->create()){
+			if ($this->model->create()) {
 				echo json_encode([
 					"success" => "Produto criado com sucesso!",
 					"data" => $this->model->getColumns()
 				]);
-			}else {
+			} else {
 				$msg = 'Erro ao cadastrar produto!';
-				$this->setHeader(500,$msg);
-   		 		throw new Exception($msg);
+				$this->setHeader(500, $msg);
+				throw new Exception($msg);
 			}
 		} catch (Exception $error) {
 			echo json_encode([
 				"error" => $error->getMessage(),
-				"trace"=> $error->getTrace()
+				"trace" => $error->getTrace()
 			]);
 		}
 	}
@@ -93,9 +82,9 @@ class Produto extends Controller
 	public function update()
 	{
 		try {
-			if(!$this->validatePostRequest(['id']))
+			if (!$this->validatePostRequest(['id']))
 				throw new Exception("Informe o ID do Produto!!");
-			
+
 			$this->validateProdutoRequest();
 
 			$this->model = new Produto(
@@ -117,7 +106,7 @@ class Produto extends Controller
 				]);
 			else throw new Exception("Erro ao atualizar produto!");
 		} catch (Exception $error) {
-			$this->setHeader(500,'Erro interno do servidor!!!!');
+			$this->setHeader(500, 'Erro interno do servidor!!!!');
 			echo json_encode([
 				"error" => $error->getMessage()
 			]);
@@ -127,15 +116,15 @@ class Produto extends Controller
 	public function remove()
 	{
 		try {
-			if (!isset($_POST["id"])){
-				$this->setHeader(400,'Bad Request.');
+			if (!isset($_POST["id"])) {
+				$this->setHeader(400, 'Bad Request.');
 				throw new Exception('Erro: id obrigatorio!');
 			}
 			$id = $_POST["id"];
 			if ($this->model->delete($id)) {
 				$response = ["message:" => "Produto id:$id removido com sucesso!"];
 			} else {
-				$this->setHeader(500,'Internal Error.');
+				$this->setHeader(500, 'Internal Error.');
 				throw new Exception("Erro ao remover Produto!");
 			}
 			echo json_encode($response);
@@ -146,10 +135,11 @@ class Produto extends Controller
 		}
 	}
 
-	public function filter() : void {
-		
-		if(!isset($_POST))
-		   echo json_encode(["error" => "enviar os filtros"]);
+	public function filter(): void
+	{
+
+		if (!isset($_POST))
+			echo json_encode(["error" => "enviar os filtros"]);
 		$reulsts = $this->model->filter($_POST);
 		echo json_encode($reulsts);
 	}
