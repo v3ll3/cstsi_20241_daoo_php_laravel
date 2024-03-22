@@ -12,7 +12,7 @@ class Route
 
 		$url_path = trim($_SERVER['REQUEST_URI'], '/');
 		self::$query = explode('/', $url_path);
-
+		
 		error_log("Query array: \n".print_r(self::$query, TRUE));
 		
 		$type = 'web';
@@ -21,6 +21,8 @@ class Route
 			$type='api';
 		}
 
+		error_log("Query array shift: \n".print_r(self::$query, TRUE));
+		
 		// $controller = ($type == 'web')? WebController::class : ApiController::class;
 		
 		$controller = ApiController::class;

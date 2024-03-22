@@ -7,6 +7,7 @@ $routes = [
     'api' => [
         'produtos' => Produto::class,
         'descontos'=> Desconto::class,
+        // 'fornecedores'=>Fonecedor::class,
     ],
     // 'web' => [
     //     'produtos' => WebProduto::class

@@ -21,6 +21,9 @@
             "email": "gillvelleda@gmail.com"
         }
     ],
+    "config": {
+        "process-timeout": 0
+    },
     "minimum-stability": "dev",
     "require": {}
 }

@@ -36,12 +36,16 @@ class Produto extends Controller
 
 	public function show($id)
 	{
-		$produto = $this->model->read($id);
-		if ($produto) {
-			$response = ['produto' => $produto];
-		} else {
-			$response = ['Erro' => "Produto não encontrado"];
-			header('HTTP/1.0 404 Not Found');
+		try{
+			$produtdo = $this->model->read($id);
+			$response = ['produtdo' => $produtdo];
+		}catch(Exception $error) {
+			$response = [
+				'Erro' => "Produto não encontrado",
+				'Msg'=> $error->getMessage(),
+				'Trace'=>$error->getTrace()
+			];
+			$this->setHeader(404, $error->getMessage());
 		}
 		echo json_encode($response);
 	}
@@ -51,7 +55,7 @@ class Produto extends Controller
 		try {
 			$this->validateProdutoRequest();
 
-			$this->model = new Produto(
+			$this->model = new ModelProduto(
 				$_POST['nome'],
 				$_POST['descricao'],
 				$_POST['quantidade'],
@@ -87,7 +91,7 @@ class Produto extends Controller
 
 			$this->validateProdutoRequest();
 
-			$this->model = new Produto(
+			$this->model = new ModelProduto(
 				$_POST['nome'],
 				$_POST['descricao'],
 				$_POST['quantidade'],
@@ -116,10 +120,9 @@ class Produto extends Controller
 	public function remove()
 	{
 		try {
-			if (!isset($_POST["id"])) {
-				$this->setHeader(400, 'Bad Request.');
+			if (!$this->validatePostRequest(['id']))
 				throw new Exception('Erro: id obrigatorio!');
-			}
+			
 			$id = $_POST["id"];
 			if ($this->model->delete($id)) {
 				$response = ["message:" => "Produto id:$id removido com sucesso!"];

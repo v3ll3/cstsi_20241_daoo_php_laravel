@@ -1,0 +1,276 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Aula04",
+    "dateExported": "2024-03-22T19:57:39.872Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "Descontos",
+            "containerId": "",
+            "created": "2024-03-22T17:52:34.813Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "Produtos",
+            "containerId": "",
+            "created": "2024-03-22T18:34:47.463Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "0f4d81ae-87be-4af6-8054-98a974d36698",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "STORE",
+            "url": "http://localhost:8081/api/descontos/store",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-22T17:52:51.267Z",
+            "modified": "2024-03-22T18:38:51.289Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "asdfasdf",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "taxa",
+                        "value": "0.15"
+                    },
+                    {
+                        "name": "descricao",
+                        "value": "Black Friday"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a3a227de-fe42-4342-9b7b-ae59283a360b",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "INDEX",
+            "url": "http://localhost:8081/api/produtos/",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-03-22T19:48:45.211Z",
+            "modified": "2024-03-22T19:48:59.480Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a102f71e-fabb-4f65-a30d-d289d52dc98f",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "UPDATE",
+            "url": "http://localhost:8081/api/descontos/update",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-22T17:53:26.713Z",
+            "modified": "2024-03-22T18:17:51.773Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "taxa",
+                        "value": "0.25"
+                    },
+                    {
+                        "name": "descricao",
+                        "value": "Dia das Maes"
+                    },
+                    {
+                        "name": "id",
+                        "value": "8"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "dfcfe1ce-94a8-4994-8797-4afb942f1b39",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "REMOVE",
+            "url": "http://localhost:8081/api/descontos/remove",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-22T19:29:31.853Z",
+            "modified": "2024-03-22T19:31:11.736Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "id",
+                        "value": "3"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "97142d5c-b9a2-4e10-9dec-ec72cf0bf99c",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "SHOW",
+            "url": "http://localhost:8081/api/produtos/show/102",
+            "method": "GET",
+            "sortNum": 35000,
+            "created": "2024-03-22T19:48:01.223Z",
+            "modified": "2024-03-22T19:54:44.224Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c91d285e-d6dd-4658-b519-1cd967073494",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "STORE",
+            "url": "http://localhost:8081/api/produtos/store",
+            "method": "POST",
+            "sortNum": 37500,
+            "created": "2024-03-22T18:34:57.861Z",
+            "modified": "2024-03-22T18:37:25.881Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nome",
+                        "value": "LJ 50"
+                    },
+                    {
+                        "name": "descricao",
+                        "value": "TV LJ  50 Smart"
+                    },
+                    {
+                        "name": "quantidade",
+                        "value": "100"
+                    },
+                    {
+                        "name": "preco",
+                        "value": "2000"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "14826c76-fa59-417c-b7e9-5f3a72dedad1",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "UPDATE",
+            "url": "http://localhost:8081/api/produtos/update",
+            "method": "POST",
+            "sortNum": 38750,
+            "created": "2024-03-22T19:49:10.625Z",
+            "modified": "2024-03-22T19:53:51.202Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nome",
+                        "value": "LJ Smart 50"
+                    },
+                    {
+                        "name": "descricao",
+                        "value": "TV LJ 50 Smart"
+                    },
+                    {
+                        "name": "id",
+                        "value": "102"
+                    },
+                    {
+                        "name": "quantidade",
+                        "value": "5000"
+                    },
+                    {
+                        "name": "preco",
+                        "value": "2500"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3cba2d87-816b-45b7-a337-6e912395d1ef",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "d1028f5b-a624-4248-bccd-74071cf67814",
+            "name": "REMOVE",
+            "url": "http://localhost:8081/api/produtos/remove",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-03-22T19:24:06.948Z",
+            "modified": "2024-03-22T19:25:17.925Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "id",
+                        "value": "2"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "ae387475-f8c5-4d0d-99f0-63764bfbfd11",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "INDEX",
+            "url": "http://localhost:8081/api/descontos/",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-22T19:31:50.877Z",
+            "modified": "2024-03-22T19:32:03.021Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0b6678e2-0c5d-40b5-b8ac-4eb715c96bb2",
+            "colId": "50fbdfc2-4e34-4e7e-a707-c6563828e9a0",
+            "containerId": "cfe65e98-952d-41c4-8ceb-d0f0c7d4bd5c",
+            "name": "SHOW",
+            "url": "http://localhost:8081/api/descontos/show/11",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-22T19:32:07.679Z",
+            "modified": "2024-03-22T19:32:56.790Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

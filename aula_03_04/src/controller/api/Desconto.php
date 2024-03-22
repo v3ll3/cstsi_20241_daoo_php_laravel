@@ -35,16 +35,16 @@ class Desconto extends Controller
 
 	public function show($id)
 	{
-		// echo json_encode([
-		// 	"data"=>"Mostrar o desconto $id !!"
-		// ]);
-		// return;
-		$desconto = $this->model->read($id);
-		if ($desconto) {
+		try{
+			$desconto = $this->model->read($id);
 			$response = ['desconto' => $desconto];
-		} else {
-			$response = ['Erro' => "Desconto não encontrado"];
-			header('HTTP/1.0 404 Not Found');
+		}catch(Exception $error) {
+			$response = [
+				'Erro' => "Desconto não encontrado",
+				'Msg'=> $error->getMessage(),
+				'Trace'=>$error->getTrace()
+			];
+			$this->setHeader(404, $error->getMessage());
 		}
 		echo json_encode($response);
 	}
@@ -52,25 +52,20 @@ class Desconto extends Controller
 	public function store()
 	{
 		try {
-			$this->validateProdutoRequest();
+			$this->validateDescontoRequest();
 
-			$this->model = new Produto(
-				$_POST['nome'],
-				$_POST['descricao'],
-				$_POST['quantidade'],
-				$_POST['preco']
+			$this->model = new ModelDesconto(
+				$_POST['taxa'],
+				$_POST['descricao']
 			);
-
-			$this->model->importado = isset($_POST['importado']);
-
 
 			if ($this->model->create()) {
 				echo json_encode([
-					"success" => "Produto criado com sucesso!",
+					"success" => "Desconto criado com sucesso!",
 					"data" => $this->model->getColumns()
 				]);
 			} else {
-				$msg = 'Erro ao cadastrar produto!';
+				$msg = 'Erro ao cadastrar descote!';
 				$this->setHeader(500, $msg);
 				throw new Exception($msg);
 			}
@@ -86,25 +81,22 @@ class Desconto extends Controller
 	{
 		try {
 			if (!$this->validatePostRequest(['id']))
-				throw new Exception("Informe o ID do Produto!!");
+				throw new Exception("Informe o ID do Desconto!!");
 
-			$this->validateProdutoRequest();
+			$this->validateDescontoRequest();
 
-			$this->model = new Produto(
-				$_POST['nome'],
-				$_POST['descricao'],
-				$_POST['quantidade'],
-				$_POST['preco']
+			$this->model = new ModelDesconto(
+				$_POST['taxa'],
+				$_POST['descricao']
 			);
-			$this->model->id = $_POST["id"];
-			$this->model->importado = isset($_POST['importado']);
-
+			
+			$this->model->setId($_POST['id']);
 			// error_log(print_r($this->model,TRUE));
 			// throw new \Exception('LOG');
 
 			if ($this->model->update())
 				echo json_encode([
-					"success" => "Produto atualizado com sucesso!",
+					"success" => "Desconto atualizado com sucesso!",
 					"data" => $this->model->getColumns()
 				]);
 			else throw new Exception("Erro ao atualizar produto!");
@@ -119,13 +111,12 @@ class Desconto extends Controller
 	public function remove()
 	{
 		try {
-			if (!isset($_POST["id"])) {
-				$this->setHeader(400, 'Bad Request.');
+			if (!$this->validatePostRequest(['id'])){
 				throw new Exception('Erro: id obrigatorio!');
 			}
 			$id = $_POST["id"];
 			if ($this->model->delete($id)) {
-				$response = ["message:" => "Produto id:$id removido com sucesso!"];
+				$response = ["message:" => "Desconto id:$id removido com sucesso!"];
 			} else {
 				$this->setHeader(500, 'Internal Error.');
 				throw new Exception("Erro ao remover Produto!");
@@ -147,13 +138,11 @@ class Desconto extends Controller
 		echo json_encode($reulsts);
 	}
 
-	private function validateProdutoRequest()
+	private function validateDescontoRequest()
 	{
 		$fields = [
-			'nome',
+			'taxa',
 			'descricao',
-			'quantidade',
-			'preco'
 		];
 		if (!$this->validatePostRequest($fields))
 			throw new Exception('Erro: campos imcompletos!');

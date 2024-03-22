@@ -2,8 +2,6 @@
 
 namespace Daoo\Aula03\controller\api;
 
-use Daoo\Aula03\model\Model;
-
 abstract class Controller{
 
 	public abstract function index();

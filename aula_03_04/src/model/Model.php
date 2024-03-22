@@ -22,6 +22,8 @@ abstract class Model
 
     public abstract function getColumns():array;
 
+    public abstract function filter(array $filters):array;
+
     protected function init():void 
     {
         try {
@@ -64,7 +66,8 @@ abstract class Model
                         ...
                     ]
                 */
-                // $this->updated .= $this->delimite($key) . " = :$key,"; //POSTGRE
+                $this->updated .= "$key = :$key,"; //POSTGRE
+                //$this->updated .= $this->delimite($key) . " = :$key,"; //POSTGRE
             }
             $this->params = substr($this->params, 0, strlen($this->params) - 1);
             $this->columns = substr($this->columns, 0, strlen($this->columns) - 1);
@@ -88,5 +91,40 @@ abstract class Model
         $prepStatement->debugDumpParams();
         error_log(ob_get_contents());
         ob_end_clean();
+    }
+
+    protected function deleteById(int $id):bool{
+        $sql = "DELETE FROM $this->table WHERE $this->primary= :id";
+        $prepStmt = $this->conn->prepare($sql);
+        if ($prepStmt->execute([':id' => $id]))
+            return $prepStmt->rowCount() > 0;
+        else return false;
+    }
+
+    protected function insert(){
+        try {
+            $sql = "INSERT INTO $this->table ($this->columns) "
+                . "VALUES ($this->params)";
+
+            error_log(print_r([
+                "colunas" => $this->columns,
+                "param" => $this->params,
+                "valores" => $this->values,
+                "SQL" => $sql
+            ], true));
+
+            $prepStmt = $this->conn->prepare($sql);
+            $result = $prepStmt->execute($this->values);
+
+            if (!$result || $prepStmt->rowCount() != 1)
+                throw new Exception("Erro ao inserir !!");
+
+            $this->dumpQuery($prepStmt);
+            return true;
+        } catch (Exception $error) {
+            error_log("ERRO: " . print_r($error, TRUE));
+            $prepStmt ?? $this->dumpQuery($prepStmt);
+            return false;
+        }
     }
 }

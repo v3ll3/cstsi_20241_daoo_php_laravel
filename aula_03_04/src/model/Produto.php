@@ -40,52 +40,36 @@ class Produto extends Model implements iDAO
                 $sql .= "WHERE $this->primary = :id";
 
             $prepStmt = $this->conn->prepare($sql);
-            
+
             if (isset($id))
                 $prepStmt->bindValue(':id', $id);
 
             if (!$prepStmt->execute())
                 throw new Exception("Erro no select!");
 
-            return $prepStmt->fetchAll(self::FETCH);
+            if (isset($id)) {
+                $result =  $prepStmt->fetch(self::FETCH);
+                if (!$result)
+                    throw new Exception("Nao encontrado!!!");
+                
+                return $result;
+            } else {
+                return $prepStmt->fetchAll(self::FETCH);
+            }
         } catch (Exception $error) {
             error_log("ERRO: " . print_r($error, TRUE));
             throw new Exception($error->getMessage());
-        }finally{
+        } finally {
             $this->dumpQuery($prepStmt);
         }
     }
 
-    public function create():bool
+    public function create(): bool
     {
-        try {
-            $sql = "INSERT INTO $this->table ($this->columns) "
-                . "VALUES ($this->params)";
-
-            error_log(print_r([
-                "colunas" => $this->columns,
-                "param" => $this->params,
-                "valores" => $this->values,
-                "SQL" => $sql
-            ], true));
-
-            $prepStmt = $this->conn->prepare($sql);
-            $result = $prepStmt->execute($this->values);
-
-            if (!$result || $prepStmt->rowCount() != 1)
-                throw new Exception("Erro ao inserir produto!!");
-
-            $this->id = $this->conn->lastInsertId();
-            $this->dumpQuery($prepStmt);
-            return true;
-        } catch (Exception $error) {
-            error_log("ERRO: " . print_r($error, TRUE));
-            $prepStmt ?? $this->dumpQuery($prepStmt);
-            return false;
-        }
+        return $this->insert();
     }
 
-    public function update():bool
+    public function update(): bool
     {
         try {
             $this->values[':id'] = $this->id;
@@ -106,16 +90,12 @@ class Produto extends Model implements iDAO
         }
     }
 
-    public function delete($id):bool
+    public function delete(int $id): bool
     {
-        $sql = "DELETE FROM $this->table WHERE id_prod = :id";
-        $prepStmt = $this->conn->prepare($sql);
-        if ($prepStmt->execute([':id' => $id]))
-            return $prepStmt->rowCount() > 0;
-        else return false;
+        return $this->deleteById($id);
     }
 
-    public function filter($arrayFilter):array
+    public function filter($arrayFilter): array
     {
         try {
             if (!sizeof($arrayFilter))
@@ -148,7 +128,8 @@ class Produto extends Model implements iDAO
         return $columns;
     }
 
-    public function __toString(): string{
+    public function __toString(): string
+    {
         return print_r($this->getColumns(), true);
     }
 
@@ -162,5 +143,4 @@ class Produto extends Model implements iDAO
     {
         return $this->$name;
     }
-
 }
