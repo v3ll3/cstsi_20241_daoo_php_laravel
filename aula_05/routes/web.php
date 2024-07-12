@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -15,3 +16,7 @@ Route::get('/ola/{nome}',function($nome){
 
 Route::get('ola',[HomeController::class,'index']);
 // Route::get('ola','HomeController@index');
+
+
+Route::get('/produtos',[ProdutoController::class,'index']);
+
