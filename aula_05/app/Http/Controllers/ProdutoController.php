@@ -20,4 +20,20 @@ class ProdutoController extends Controller
             "produto"=>Produto::find($id)
         ]);
     }
+
+    public function store(Request $request){
+
+        $dados = $request->all();
+        $dados['importado'] = $request->has('importado');
+
+        if(Produto::create($dados)){
+            return redirect('/produtos');
+        }else dd("Erro!!!");
+    }
+
+    public function create(){
+        return view('produto.create');
+    }
+
+
 }
