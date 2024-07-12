@@ -13,4 +13,11 @@ class ProdutoController extends Controller
             "produtos"=>Produto::all()
         ]);
     }
+
+    public function show($id){
+        //return response()->json(Produto::all());
+        return view('produto.show',[
+            "produto"=>Produto::find($id)
+        ]);
+    }
 }

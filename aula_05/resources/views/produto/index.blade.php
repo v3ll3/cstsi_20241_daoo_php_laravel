@@ -22,7 +22,8 @@
         <tbody>
             @foreach($produtos as $produto)
             <tr>
-                <td>{{$produto->id}}</td>
+                <td><a target=_blank href="/produto/{{$produto->id}}">
+                        {{$produto->id}}</a></td>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>

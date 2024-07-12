@@ -17,6 +17,6 @@ Route::get('/ola/{nome}',function($nome){
 Route::get('ola',[HomeController::class,'index']);
 // Route::get('ola','HomeController@index');
 
-
 Route::get('/produtos',[ProdutoController::class,'index']);
 
+Route::get('/produto/{id}',[ProdutoController::class,'show']);
