@@ -35,5 +35,21 @@ class ProdutoController extends Controller
         return view('produto.create');
     }
 
+    public function update(Request $request, $id){
+
+        $dados = $request->all();
+        $dados['importado'] = $request->has('importado');
+
+        if(!Produto::find($id)->update($dados))
+            dd("Erro!!!");
+
+        return redirect('/produtos');
+    }
+
+    public function edit($id){
+        return view('produto.edit',[
+            "produto"=>Produto::find($id)
+        ]);
+    }
 
 }
