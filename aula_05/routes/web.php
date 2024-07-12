@@ -14,3 +14,4 @@ Route::get('/ola/{nome}',function($nome){
 });
 
 Route::get('ola',[HomeController::class,'index']);
+// Route::get('ola','HomeController@index');
