@@ -32,3 +32,9 @@ return new class extends Migration
         Schema::dropIfExists('promocao_produto');
     }
 };
+
+
+//Para executar uma migration isoladamente use o comando --path
+// passe todo caminho (path), desde a pasta raiz da aplicacao
+//Comando:
+// php artisan migrate --path='database/migrations/2024_08_02_170008_produto_promocao.php'
