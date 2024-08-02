@@ -25,8 +25,10 @@ class DatabaseSeeder extends Seeder
             EstadoSeeder::class
         ]);
 
-        \App\Models\Fornecedor::factory(5)
-                ->hasProdutos(10)
+        \App\Models\Fornecedor::factory(50)
+                ->hasProdutos(20)
                 ->create();
+
+        //User::factory(10)->hasPost(5)->hasCommets(10)(User)
     }
 }

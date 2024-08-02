@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cnpj');
             $table->string('telefone');
             $table->string('email');
-            $table->foreignId('estado_id')
+            $table->foreignId('estado_id')//estados
                 ->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
