@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
                 ->hasProdutos(20)
                 ->create();
 
-        //User::factory(10)->hasPost(5)->hasCommets(10)(User)
+        $this->call([
+            PromocaoSeeder::class,
+            ProdutoPromocaoSeeder::class
+        ]);
     }
 }
