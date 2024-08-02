@@ -37,7 +37,13 @@ class ProdutoPromocaoSeeder extends Seeder
         $listProdutos->each(function ($produto)
              use ($listPromocoesIDs, $pivoFields) {
             [$promoId, $promoId2] = $listPromocoesIDs->random(2);
-            $produto->promocoes()->attach([
+            /*O erro que gerou no final da aula passada era por que a tabela pivo produto_promocao
+            ja possui registros, portanto com o toggle, caso gere uma combinacao de ids
+            de produto e promocao ja registrados, estes serao desativados e nao
+            ira gerar conflito, caso que acontece com o attach. Pois o attach
+            tenta inserir um registro que ja existe, violando a restricao da chave
+            primaria composta por produto_id e promocao_id.*/
+            $produto->promocoes()->toglle([//troca de attach para toggle
                 $promoId => $pivoFields,
                 $promoId2 => $pivoFields
             ]);
