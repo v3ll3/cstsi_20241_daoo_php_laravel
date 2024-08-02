@@ -29,13 +29,14 @@ class ProdutoPromocaoSeeder extends Seeder
         $now = Carbon::now()->toDateTimeString();
         $pivoFields = ['created_at'=>$now,
                        'updated_at'=>$now,
-                        'desconto'=>99.99];
+                    ];
 
         Log::channel('stderr')->info('Relacionando promocoes e produtos...');
         $listPromocoesIDs = Promocao::all()->pluck('id');
 
         $listProdutos->each(function ($produto)
              use ($listPromocoesIDs, $pivoFields) {
+            $pivoFields['desconto']= fake()->numberBetween(10,75);
             [$promoId, $promoId2] = $listPromocoesIDs->random(2);
             /*O erro que gerou no final da aula passada era por que a tabela pivo produto_promocao
             ja possui registros, portanto com o toggle, caso gere uma combinacao de ids
@@ -43,7 +44,7 @@ class ProdutoPromocaoSeeder extends Seeder
             ira gerar conflito, caso que acontece com o attach. Pois o attach
             tenta inserir um registro que ja existe, violando a restricao da chave
             primaria composta por produto_id e promocao_id.*/
-            $produto->promocoes()->toglle([//troca de attach para toggle
+            $produto->promocoes()->toggle([//troca de attach para toggle
                 $promoId => $pivoFields,
                 $promoId2 => $pivoFields
             ]);
