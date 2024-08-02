@@ -22,5 +22,8 @@ class Produto extends Model
         return $this->belongsTo(Fornecedor::class);
     }
 
-
+    public function promocoes()
+    {
+        return $this->belongsToMany(Promocao::class);
+    }
 }
