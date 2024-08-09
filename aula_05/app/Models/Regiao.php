@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regiao extends Model
 {
-    use HasFactory;
+    use HasFactory, \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+
     protected $table = 'regioes'; //personalizacao do nome da tabela
     protected $fillable = ['nome'];
 
@@ -19,6 +20,13 @@ class Regiao extends Model
         return $this->hasManyThrough(
             Fornecedor::class,
             Estado::class
+        );
+    }
+
+    public function produtos(){
+        return $this->hasManyDeep(
+            Produto::class,
+            [Estado::class,Fornecedor::class]
         );
     }
 }
