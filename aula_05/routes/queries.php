@@ -46,6 +46,12 @@ Route::prefix('queries')->group(function () {
 
     });
 
+    //retorna todos os fornecedores que possuem produtos
+    // com o load carrega também os produtos
+    Route::get('fornecedores/produtos/',function(){
+        dump(Fornecedor::has('produtos')->with('produtos')->get()->toArray());
+    });
+
 
 
 });
