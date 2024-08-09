@@ -42,4 +42,5 @@ class Produto extends Model
             ]
         );
     }
+
 }

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +28,5 @@ Route::post('/produto',[ProdutoController::class,'store']);
 
 Route::get('/produto/{id}/edit',[ProdutoController::class,'edit'])->name('produto.edit');
 Route::post('/produto/{id}/edit',[ProdutoController::class,'update'])->name('produto.update');;
+
+include_once __DIR__."/querys.php";
