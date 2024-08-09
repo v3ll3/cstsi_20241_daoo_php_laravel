@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Regiao extends Model
 {
-    use HasFactory, \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+    use HasFactory, HasRelationships;
 
     protected $table = 'regioes'; //personalizacao do nome da tabela
     protected $fillable = ['nome'];
