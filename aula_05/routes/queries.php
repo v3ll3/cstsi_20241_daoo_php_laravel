@@ -34,8 +34,16 @@ Route::prefix('queries')->group(function () {
         dump($result->toArray());
 
         Debugbar::info($result->produtos->count());
-        Debugbar::error($result->produtos->avg('preco'));
-        Debugbar::warning($result->produtos->max('preco'));
+        Debugbar::error('Média de preços: '.$result->produtos->avg('preco'));
+        Debugbar::warning('Preço máximo: '.$result->produtos->max('preco'));
+
+        try{
+            Produto::findOrfail(10000);
+        }catch(\Exception $e){
+            Debugbar::error('Model não encontrada!!!');
+            Debugbar::addThrowable($e);//aparece na aba de bugs
+        }
+
     });
 
 
