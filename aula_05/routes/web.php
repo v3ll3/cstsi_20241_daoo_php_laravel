@@ -29,4 +29,4 @@ Route::post('/produto',[ProdutoController::class,'store']);
 Route::get('/produto/{id}/edit',[ProdutoController::class,'edit'])->name('produto.edit');
 Route::post('/produto/{id}/edit',[ProdutoController::class,'update'])->name('produto.update');;
 
-include_once __DIR__."/querys.php";
+include_once __DIR__."/queries.php";
