@@ -1,5 +1,0 @@
-{
-    "require": {
-        "staudenmeir/belongs-to-through": "^2.5"
-    }
-}
