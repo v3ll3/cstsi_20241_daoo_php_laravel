@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -21,7 +22,31 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $statusHttp = 201;
+        try{
+            $newProduto = $request->all();
+            $newProduto['importado'] = $request->has('importado');
+            $storedProduto = Produto::create($newProduto);
+            return response()->json([
+                    'message'=>'Produto inserido com sucesso',
+                    'data' => $storedProduto
+                ],$statusHttp);
+        }catch(Exception $error){
+            $responseError = [
+                'message'=>'Erro ao inserir o produto!!!',
+            ];
+
+            $statusHttp = 500;
+
+            if(env('APP_DEBUG'))
+                $responseError = [
+                         ...$responseError,
+                        'error'=>$error->getMessage(),
+                        'trace'=>$error->getTrace()
+                    ];
+
+            return response()->json($responseError,$statusHttp);
+        }
     }
 
     /**
