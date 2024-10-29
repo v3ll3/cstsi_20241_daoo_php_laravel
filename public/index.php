@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 
+// ini_set('post_max_size','300M');
+// ini_set('upload_max_filesize','300M');
+// ini_set('memory_limit','200M');
+// ini_set('max_execution_time','200');
+
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
