@@ -11,6 +11,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/phpinfo', function () {
+    echo phpinfo();
+});
+
 Route::get('/ola/{nome}',function($nome){
     // return view('olamundo_name',["fuleco"=>$nome]);
     return View::make('olamundo_name', ["fuleco"=>$nome]); //Usando o facade View
